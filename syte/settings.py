@@ -12,7 +12,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    #('Jeff Hsuq', 'jeffhsu3@gmail.com'),
 )
 MANAGERS = ADMINS
 
@@ -63,6 +63,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'gunicorn',
+    'compressor',
+
 )
 
 try:
