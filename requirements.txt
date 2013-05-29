@@ -10,4 +10,4 @@ psycopg2==2.4.5
 gunicorn==0.14.2
 pybars==0.0.1
 rauth==0.4.14
-django-compressor
+-e git://github.com/jezdez/django_compressor.git@3723a67bf4e7c3420823b0e49cfc1c50c9333b5d#egg=django_compressor-dev
