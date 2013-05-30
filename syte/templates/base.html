@@ -13,14 +13,9 @@
   {% if RSS_FEED_ENABLED %}
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ RSS_FEED_URL }}" />
   {% endif %}
-  {% if DEV_DEPLOYMENT_MODE %}
-  <link rel="stylesheet/less" type="text/css" href="{{ MEDIA_URL }}less/styles.less">
-  <script src="{{ MEDIA_URL }}less/less-1.1.5.min.js" type="text/javascript"></script>
-  {% else %}
   {% compress css %}
-  <link rel="stylesheet/less" type="text/css" media="screen, projection" href="{{ MEDIA_URL }}less/styles.less">
+  <link rel="stylesheet" type="text/less" media="all" href="{{ MEDIA_URL }}less/styles.less">
   {% endcompress %}
-  {% endif %}
 </head>
 <body>
 <header class="main-header">
@@ -73,7 +68,7 @@ var twitter_integration_enabled = {% if TWITTER_INTEGRATION_ENABLED %}true{% els
 {% if DISQUS_INTEGRATION_ENABLED %}var disqus_shortname = '{{ DISQUS_SHORTNAME }}';{% endif %}
 </script>
 
-{% if DEV_DEPLOYMENT_MODE %}
+{% compress js %}
 <script src="{{ MEDIA_URL }}js/libs/jquery.url.js"></script>
 <script src="{{ MEDIA_URL }}js/libs/require.js"></script>
 <script src="{{ MEDIA_URL }}js/libs/handlebars.js"></script>
@@ -94,9 +89,7 @@ var twitter_integration_enabled = {% if TWITTER_INTEGRATION_ENABLED %}true{% els
 {% if DISQUS_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/disqus.js"></script>{% endif %}
 {% if SOUNDCLOUD_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/soundcloud.js"></script>{% endif %}
 {% if FOURSQUARE_INTEGRATION_ENABLED %}<script src="{{ MEDIA_URL }}js/components/foursquare.js"></script>{% endif %}
-{% else %}
-<script src="{{ MEDIA_URL }}js/min/scripts-{{ COMPRESS_REVISION_NUMBER }}.min.js"></script>
-{% endif %}
+{% endcompress %}
 
 {% block extra_js %}{% endblock %}
 <script type="text/javascript">

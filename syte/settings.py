@@ -3,6 +3,7 @@
 
 import os
 import django
+from personal_syte_settings import *
 # calculated paths for django and the site
 # used as starting points for various other paths
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
@@ -67,7 +68,9 @@ INSTALLED_APPS = (
 
 )
 
-try:
-    from personal_syte_settings import *
-except ImportError:
-    from syte_settings import *
+COMPRESS_PRECOMPILERS = (
+        ('text/coffeescript', 'coffee --compile --stdio'),
+        ('text/less', 'lessc {infile} {outfile}'),
+        )
+
+COMPRESS_ENABLED = True
